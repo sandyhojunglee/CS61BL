@@ -7,8 +7,8 @@ public class Path {
 
     public Path(double x, double y)
     {
-        next = new Point (x, y)
-        curr = new Point (1, 1)
+        next = new Point (x, y);
+        curr = new Point (1, 1);
     }
     public double getCurrX()
     {
@@ -20,13 +20,17 @@ public class Path {
     }
     public double getNextX()
     {
-      return this.next.getX()
+      return this.next.getX();
     }
     public double getNextY()
     {
       return this.next.getY();
     }
-    public void Point point)
+    public Point getCurrentPoint()
+    {
+      return curr;
+    }
+    public void setCurrentPoint(Point point)
     {
       curr = point;
     }
