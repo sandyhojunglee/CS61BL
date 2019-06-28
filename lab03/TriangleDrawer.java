@@ -15,4 +15,4 @@ public class TriangleDrawer {
 
 }
 
-//System.out.println();
+/* System.out.println(); */
