@@ -5,13 +5,13 @@ import static enigma.EnigmaException.*;
 /** Superclass that represents a rotor in the enigma machine.
  *  @author
  */
-class Rotor {
+public class Rotor {
 
     /** A rotor named NAME whose permutation is given by PERM. */
-    Rotor(String name, Permutation perm) {
+    public Rotor(String name, Permutation perm) {
         _name = name;
         _permutation = perm;
-        // FIXME - Assign any additional instance variables.
+        //initialize current setting to 0
     }
 
     /** Return my name. */
@@ -62,12 +62,19 @@ class Rotor {
     /** Return the conversion of P (an integer in the range 0..size()-1)
      *  according to my permutation. */
     public int convertForward(int p) {
+        //add current setting
+        //mod to keep within alphabet space
+        //use the _permutation to go forward
+        //subtract current setting
+        //mod to keep within alphabet space
         return 0;  // FIXME - How do we permute the index P, taking into account my current position?
     }
 
     /** Return the conversion of C (an integer in the range 0..size()-1)
      *  according to the inverse of my permutation. */
     public int convertBackward(int c) {
+        //difference between ^ is that we are now going backwards
+        //using invert
         return 0;  // FIXME - How do we invert the index E, taking into account my current position?
     }
 
@@ -91,9 +98,9 @@ class Rotor {
 
     /** The permutation implemented by this rotor in its 0 position. */
     private Permutation _permutation;
+    //^used for transformation
 
-    // FIXME - How do we keep track of what position I am in?
+    //keep track of last setting
 
-    // FIXME: ADDITIONAL FIELDS HERE, AS NEEDED
 
 }
