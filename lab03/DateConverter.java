@@ -21,7 +21,6 @@ public class DateConverter {
         month = 1;
         daysInMonth = 31;
         while (dayOfYear > daysInMonth) {
-            month += 1;
             if (month == 2) {
                 daysInMonth = 28;
             } else if (month == 4 || month == 6 || month == 9 || month == 11) {
@@ -29,6 +28,7 @@ public class DateConverter {
             } else {
                 daysInMonth = 31;
             }
+            month += 1;
             dayOfYear -= daysInMonth;
         }
         dateInMonth = dayOfYear;
