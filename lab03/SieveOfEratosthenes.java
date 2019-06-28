@@ -8,16 +8,16 @@ public class SieveOfEratosthenes {
                     "and provide a number in the `Program arguments` box.");
             return;
         }
-		int upperBound = args[0];
-		boolean[] isNotPrime = new boolean[upperBound];
-		for (int i = 0; i <= upperBound; i++) {
-			if (isNotPrime[i] == true) {
+		String upperBound = args[0];
+		boolean[] isNotPrime = new boolean[Integer.parseInt(upperBound)];
+		for (int i = 0; i < upperBound.length(); i++) {
+			if (isNotPrime[i]) {
 				continue;
 			} else {
-				//THIS DATA HAS BEEN CORRUPTED; REPLACE IT!
+				
 			}
 		}
-		for (int i = 0; i <= upperBound; i++) {
+		for (int i = 0; !(i > upperBound.length()); i++) {
 			if (!isNotPrime[i]) {
 				System.out.println(i + " is a prime number.");
 			}
