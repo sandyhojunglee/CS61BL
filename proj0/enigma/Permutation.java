@@ -64,7 +64,9 @@ class Permutation {
     //return forwardArray[23]
     public int permute(int p) {
         // NOTE: it might be beneficial to have one permute() method always call the other
-        return this.alphabet.toChar(p);  // FIXME - How do we use our instance variables to get the index that P permutes to?
+        return alphabet.toInt(permute(this.alphabet.toChar(p)));
+    }
+    // FIXME - How do we use our instance variables to get the index that P permutes to?
 
 
     /**
@@ -74,7 +76,7 @@ class Permutation {
     //use thr tored conversion array to translate it backward (backward array)
     public int invert(int c) {
         // NOTE: it might be beneficial to have one invert() method always call the other
-        return 0;  // FIXME - How do we use our instance variables to get the index that C inverts to?
+        return alphabet.toInt(invert(this.alphabet.toChar(c)));  // FIXME - How do we use our instance variables to get the index that C inverts to?
     }
 
     /**
@@ -82,27 +84,63 @@ class Permutation {
      * of character P in ALPHABET.
      */
     public char permute(char p) {
-        // NOTE: it might be beneficial to have one permute() method always call the other
-        return (this.cycles.charAt(this.cycles.indexOf(p) + 1));  // FIXME - How do we use our instance variables to get the character that P permutes to?
+        int i = 0;
+        while(i < cycles.length()) {
+            if (cycles.charAt(i) == p) {
+                if (cycles.charAt(i + 1) != ')') {
+                    return cycles.charAt(i + 1);
+                } else {
+                    while (cycles.charAt(i-1) != '(') {
+                        i--;
+                    }
+                    return cycles.charAt(i + 1);
+                }
+            } else {
+                i++;
+                }
+
+        } return cycles.charAt(p);
     }
+    // NOTE: it might be beneficial to have one permute() method always call the other
+    //return (this.cycles.charAt(this.cycles.indexOf(p) + 1));
+    // FIXME - How do we use our instance variables to get the character that P permutes to?
+
 
     /**
      * Return the character result of applying the inverse of this permutation
      * to the index of character P in ALPHABET.
      */
     public char invert(char c) {
-        // NOTE: it might be beneficial to have one invert() method always call the other
-        return 0;  // FIXME - How do we use our instance variables to get the character that C inverts to?
+        int reverse = cycles.length() - 1;
+        while (reverse >= 0) {
+            if (cycles.charAt(reverse) == c) {
+                if (cycles.charAt(reverse - 1) != '(') {
+                    return cycles.charAt(reverse - 1);
+                } else {
+                    while (cycles.charAt(reverse + 1) != ')') {
+                        reverse++;
+                    }
+                    return cycles.charAt(reverse - 1);
+                }
+            } else {
+                reverse--;
+                }
+
+        }
+        return cycles.charAt(c);
     }
+
+        // NOTE: it might be beneficial to have one invert() method always call the other
+        // FIXME - How do we use our instance variables to get the character that C inverts to?
+
 
     /**
      * Return the alphabet used to initialize this Permutation.
      */
     public Alphabet alphabet() {
-
         return this.alphabet;
     }
-}
+
 
 
  // FIXME - How do we store which letter permutes/inverts to which?
