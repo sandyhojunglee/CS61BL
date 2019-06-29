@@ -3,11 +3,16 @@ import java.awt.Point;
 public class TracedPoint extends Point {
 
     public TracedPoint(int x, int y) {
-
         super(x, y);
     }
 
-    // Your move method goes here.
+    public void move(int x, int y) {
+        int holdX = this.x;
+        int holdY = this.y;
+        this.x = x;
+        this.y = y;
+        System.out.println("point moved from (" + holdX + "," + holdY + ") to (" + this.x + ',' +this.y+')' );
+    }
 
     public static void main(String[] args) {
         TracedPoint p1 = new TracedPoint(5, 6);
