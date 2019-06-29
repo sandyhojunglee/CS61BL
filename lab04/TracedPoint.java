@@ -3,6 +3,7 @@ import java.awt.Point;
 public class TracedPoint extends Point {
 
     public TracedPoint(int x, int y) {
+
         super(x, y);
     }
 

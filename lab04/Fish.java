@@ -4,7 +4,9 @@ public class Fish {
     private int ssn;
 
     //Constructor A: No-args Fish Constructor
-    //public Fish() { }
+    public Fish() {
+
+    }
 
     // Constructor B: Fish Constructor with an int parameter
     public Fish(int w) {

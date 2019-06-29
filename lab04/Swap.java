@@ -10,7 +10,7 @@ public class Swap {
                 int temporary = arr[start_index];
                 arr[start_index] = arr[start_index + 1];
                 arr[start_index + 1] = temporary;
-                counter = counter + 1;
+                this.counter = this.counter + 1;
                 counter2 = counter2 + 2;
                 counter3 = counter3 + 1;
             }
