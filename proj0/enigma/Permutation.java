@@ -30,7 +30,7 @@ public class Permutation {
      * Whitespace is ignored.
      */
     //underscores differentiate objects from instance variables
-    Permutation(String cycles, Alphabet alphabet) {
+    public Permutation(String cycles, Alphabet alphabet) {
         this.alphabet = alphabet;
         this.cycles = cycles;
     }
