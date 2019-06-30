@@ -4,7 +4,7 @@ import static enigma.EnigmaException.*;
 
 /** Represents a permutation of a range of integers starting at 0 corresponding
  *  to the characters of an alphabet.
- *  @ Sandy Lee
+ *  @SandyLee
  */
 class Permutation {
     /**
@@ -38,7 +38,7 @@ class Permutation {
     /**
      * Return the value of P modulo the size of this permutation.
      */
-    private final int wrap(int p) {
+    final int wrap(int p) {
         int r = p % size();
         if (r < 0) {
             r += size();
@@ -84,13 +84,13 @@ class Permutation {
      * of character P in ALPHABET.
      */
     public char permute(char p) {
-        int i = 0;
-        while(i < cycles.length()) {
+        int i = this.cycles.indexOf(p);
+        if(this.cycles.contains(p + "")) {
             if (cycles.charAt(i) == p) {
                 if (cycles.charAt(i + 1) != ')') {
                     return cycles.charAt(i + 1);
                 } else {
-                    while (cycles.charAt(i-1) != '(') {
+                    while (cycles.charAt(i) != '(') {
                         i--;
                     }
                     return cycles.charAt(i + 1);
@@ -99,7 +99,7 @@ class Permutation {
                 i++;
                 }
 
-        } return cycles.charAt(p);
+        }return p;
     }
     // NOTE: it might be beneficial to have one permute() method always call the other
     //return (this.cycles.charAt(this.cycles.indexOf(p) + 1));
@@ -111,24 +111,19 @@ class Permutation {
      * to the index of character P in ALPHABET.
      */
     public char invert(char c) {
-        int reverse = cycles.length() - 1;
-        while (reverse >= 0) {
-            if (cycles.charAt(reverse) == c) {
-                if (cycles.charAt(reverse - 1) != '(') {
-                    return cycles.charAt(reverse - 1);
-                } else {
-                    while (cycles.charAt(reverse + 1) != ')') {
-                        reverse++;
-                    }
-                    return cycles.charAt(reverse - 1);
-                }
+        int reverse = this.cycles.indexOf(c);
+        if (this.cycles.contains(c + "")) {
+            if (cycles.charAt(reverse - 1) != '(') {
+                return cycles.charAt(reverse - 1);
             } else {
-                reverse--;
-                }
-
+                while (cycles.charAt(reverse) != ')') {
+                    reverse++;
+                } return cycles.charAt(reverse - 1);
+            }
+        } else {
+            return c;
+            }
         }
-        return cycles.charAt(c);
-    }
 
         // NOTE: it might be beneficial to have one invert() method always call the other
         // FIXME - How do we use our instance variables to get the character that C inverts to?

@@ -3,7 +3,7 @@ package enigma;
 import static enigma.EnigmaException.*;
 
 /** Class that represents a rotating rotor in the enigma machine.
- *  @author
+ *  @SandyLee
  */
 public class MovingRotor extends Rotor {
 
@@ -12,8 +12,12 @@ public class MovingRotor extends Rotor {
      *  The Rotor is initially in its 0 setting (first character of its
      *  alphabet).
      */
+    public String[] myNotches; //keeps track of notches
+    private final String notches;
+
     public MovingRotor(String name, Permutation perm, String notches) {
         super(name, perm);
+        this.notches = notches;
         //initialize boolean array
         //once you've done permutation, this should be pretty clear
 
@@ -42,19 +46,37 @@ public class MovingRotor extends Rotor {
     public boolean atNotch() {
         //use array to figure out if the current setting has a notch
         // to get the setting, use setting() (in the parent file)
-        return false; // FIXME - How do we know whether this Rotor is at a notch?
+        if (this.notches != null) {
+            if (this.notches.contains(alphabet().toChar(super.setting()) + "")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
     }
+        /**for (int i = 0; i < this.notches.length(); i++) {
+            if (myNotches[i] == null) { //switched from != to ==
+                int index = alphabet().toInt(notches.charAt(i));
+                myNotches[index] = true;
+            } else {
+                return false;
+            }
+        }
+        return ; // FIXME - How do we know whether this Rotor is at a notch?
+    }*/
 
     @Override // Use this special tag when updating the behavior of a method this class inherits from Rotor
     public void advance() {
-        //only called if you are goin gto move
+        //only called if you are going to move
         //move the rotor by 1 position
         //Z -> A (mod here, too)
-
+        //
+        super.advance();
         // FIXME - What methods can we use to advance this Rotor by one position?
     }
 
-    // boolean[] my_notches
+
     // FIXME - How do we keep track of my notches?
 
     // FIXME: ADDITIONAL FIELDS HERE, AS NEEDED

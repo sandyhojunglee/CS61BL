@@ -3,7 +3,7 @@ package enigma;
 import static enigma.EnigmaException.*;
 
 /** Class that represents a reflector in the enigma.
- *  @author
+ *  @SandyLee
  */
 public class Reflector extends FixedRotor {
 
@@ -23,7 +23,7 @@ public class Reflector extends FixedRotor {
 
     @Override // Use this special tag when updating the behavior of a method this class inherits from FixedRotor
     public boolean reflecting() {
-        return false; // FIXME? - How do we know whether this Rotor should reflect?
+        return true; // FIXME? - How do we know whether this Rotor should reflect?
     }
 
     @Override // Use this special tag when updating the behavior of a method this class inherits from FixedRotor
