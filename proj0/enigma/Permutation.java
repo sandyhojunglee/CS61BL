@@ -6,7 +6,7 @@ import static enigma.EnigmaException.*;
  *  to the characters of an alphabet.
  *  @SandyLee
  */
-class Permutation {
+public class Permutation {
     /**
      * Alphabet of this permutation.
      */
